@@ -1,0 +1,18 @@
+{
+    "type": "mysql",
+    "host": "192.168.50.6",
+    "port": 3306,
+    "username": "root",
+    "password": "password",
+    "database": "laboratoryApi",
+    "entities": [ 
+        "./src/modules/*/infra/typeorm/entities/*.ts" 
+    ], 
+    "migrations": [ 
+        "./src/shared/infra/typeorm/migrations/*.ts"
+    ], 
+    "cli": { 
+        "entitiesDir": "./src/modules/*/infra/typeorm/entities", 
+        "migrationsDir": "./src/shared/infra/typeorm/migrations" 
+    }
+}
