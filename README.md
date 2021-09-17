@@ -1,29 +1,43 @@
-<p align="left">
-  <strong>Api Rest para cadastrar laboratórios e exames.
- <br>Seguir instruções abaixo para rodar o ambiente.</strong>
-</p>
+# Instruções
+## Desenvolvimento
+- Informe no arquivo `.ormconfig.json` as variáveis de ambiente, como credenciais, acesso de banco de dados, secrets, etc;
+- Inicie um banco de dados postgresql;
+- Execute:
 
-<p align="left">
-   Subir ambiente: <strong>docker-compose up -d</strong>
-</p>
+```bash
+yarn                         ## install
+yarn typeorm migration:run   ## run migration
+yarn dev                     ## start dev server
+```
 
-<p align="left">
-  Desenvolvimento acessar em: <strong>[Desenvolvimento](http://localhost:4000/)</strong>
-</p>
+- Outra alternativa é utilizar o `Docker` e o `docker-compose`, usando o comando:
 
-<p align="left">
-  Produção acessar em: <strong>[Produção](http://206.189.229.140:4000/)</strong>
-</p>
+```bash
+docker-compose up -d
+```
 
-<p align="left">
-  Logar com: /login (email: admin@admin.com | password: 123456)
-</p>
+## Produção
 
-<p align="left">
-  Acessar as seguintes rotas: /exam (cadastro de exames) | /laboratory (Cadastro de laboratório) 
-</p>
+- Informe no arquivo `.ormconfig.json` as variáveis do ambiente de produção. IMPORTANTE: você precisa alterar as variáveis
+  do TypeORM para usar o diretório de produção, substituindo `src` por `dist` e `*.ts` por `*.js`;
+- Inicie um banco de dados postgresql;
+- Execute:
 
+```bash
+yarn                         ## install
+yarn build                   ## build with babel and webpack
+yarn typeorm migration:run   ## run migrations
+yarn start                   ## start server
+```
 
-<p align="left">
-    Utilizar os metodos GET, POST, PATCH e DELETE para realizar as operações nos endpoints.
-</p>
+- Já existe uma implementação em produção, na plataforma `Digital Ocean`:
+  - [desafio-wa-laboratory](http://206.189.229.140:4000/);
+## Banco de Dados
+
+- Adicione as configurações nas variáveis de ambiente do seu banco de dados. De preferência, utilizado MySQL, pois foi desenvolvido nele a API:
+  - `type`;
+  - `host`;
+  - `username`;
+  - `password`;
+  - `database`;
+  - `port`.
