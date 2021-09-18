@@ -1,18 +1,18 @@
 {
     "type": "mysql",
-    "host": "192.168.50.6",
+    "host": "localhost",
     "port": 3306,
     "username": "root",
-    "password": "password",
+    "password": "secret",
     "database": "laboratoryApi",
     "entities": [ 
-        "./src/modules/*/infra/typeorm/entities/*.ts" 
+        "./src/modules/*/entities/*.ts" 
     ], 
     "migrations": [ 
-        "./src/shared/infra/typeorm/migrations/*.ts"
+        "./src/shared/database/migrations/*.ts"
     ], 
     "cli": { 
-        "entitiesDir": "./src/modules/*/infra/typeorm/entities", 
-        "migrationsDir": "./src/shared/infra/typeorm/migrations" 
+        "entitiesDir": "./src/modules/*/entities", 
+        "migrationsDir": "./src/shared/database/migrations" 
     }
 }
