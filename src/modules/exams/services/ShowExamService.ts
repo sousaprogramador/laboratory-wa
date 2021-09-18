@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import Exam from '../entities/Exam';
 import IExamsRepository from '../repositories/IExamsRepository';

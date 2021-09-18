@@ -32,7 +32,7 @@ class FakeExamsRepository implements IExamsRepository {
     return exam;
   }
 
-  public async findById(examId: string): Promise<Exam | undefined> {
+  public async findById(examId: number): Promise<Exam | undefined> {
     return this.exams.find(exam => exam.id === examId);
   }
 
@@ -44,15 +44,10 @@ class FakeExamsRepository implements IExamsRepository {
     { status, type }: IFindAllByStatusAndType,
     { limit, page }: IPaginationOptions,
   ): Promise<Pagination<Exam>> {
-    const foundExams = this.exams.filter(
-      findWithdraw =>
-        findWithdraw.status === status && findWithdraw.type === type,
-    );
-
-    const total = foundExams.length;
+    const total = this.exams.length;
 
     return {
-      values: foundExams.slice((page - 1) * limit, page * limit),
+      values: this.exams.slice((page - 1) * limit, page * limit),
       total,
       totalPages: Math.ceil(total / limit),
     };

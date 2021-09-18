@@ -25,11 +25,9 @@ describe('list laboratories', () => {
     });
 
     expect(data.values[0].id).toEqual(laboratory.id);
-    expect(data.values[0].status).toEqual(false);
   });
 
   it('should list the laboratories active', async () => {
-    laboratory.status = true;
     await laboratoriesRepository.save(laboratory);
 
     const data = await listLaboratories.execute({
@@ -41,6 +39,5 @@ describe('list laboratories', () => {
     });
 
     expect(data.values[0].id).toEqual(laboratory.id);
-    expect(data.values[0].status).toEqual(true);
   });
 });

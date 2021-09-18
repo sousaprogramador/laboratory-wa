@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import Laboratory from '../entities/Laboratory';
 import normalLaboratory from '../mocks/laboratories';
 import FakeLaboratoriesRepository from '../repositories/implementations/FakeLaboratoriesRepository';
@@ -27,29 +27,12 @@ describe('show laboratory', () => {
     expect(foundLaboratory.id).toEqual(laboratory.id);
     expect(foundLaboratory.name).toEqual('new name');
     expect(foundLaboratory.address).toEqual('new address');
-    expect(foundLaboratory.status).toEqual(true);
   });
 
   it('should not update a laboratory if laboratory id does not exist', async () => {
     await expect(
       updateLaboratory.execute({
         laboratoryId: 1234,
-        name: 'new name',
-        address: 'new address',
-        status: true,
-      }),
-    ).rejects.toBeInstanceOf(AppError);
-  });
-
-  it('should not update a laboratory if name already in use', async () => {
-    await laboratoriesRepository.create({
-      name: 'new name',
-      address: 'new address',
-    });
-
-    await expect(
-      updateLaboratory.execute({
-        laboratoryId: laboratory.id,
         name: 'new name',
         address: 'new address',
         status: true,

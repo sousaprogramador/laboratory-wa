@@ -16,5 +16,4 @@ export default interface ILaboratoriesRepository {
     status: boolean,
     paginationOptions: IPaginationOptions,
   ): Promise<Pagination<Laboratory>>;
-  findByIdAndExam(data: IFindByIdAndExamDTO): Promise<Laboratory | undefined>;
 }

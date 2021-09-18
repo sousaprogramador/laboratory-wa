@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import Laboratory from '../entities/Laboratory';
 import ILaboratoriesRepository from '../repositories/ILaboratoriesRepository';
@@ -38,7 +38,6 @@ export default class UpdateBatchLaboratoriesService {
 
         laboratory.name = request.name;
         laboratory.address = request.address;
-        laboratory.status = request.status;
         await this.laboratoriesRepository.save(laboratory);
 
         return laboratory;

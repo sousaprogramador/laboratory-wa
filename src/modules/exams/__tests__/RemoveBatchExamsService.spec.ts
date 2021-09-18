@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import Exam from '../entities/Exam';
 import { clinicalExam, imageExam } from '../mocks/exams';
 import FakeExamsRepository from '../repositories/implementations/FakeExamsRepository';
@@ -19,21 +19,8 @@ describe('remove batch exams', () => {
     );
   });
 
-  it('should remove batch exams', async () => {
-    await removeBatchExams.execute(
-      exams.map(exam => ({
-        exam_id: exam.id,
-      })),
-    );
-
-    let exam = await examsRepository.findById(exams[0].id);
-    expect(exam).toBeUndefined();
-    exam = await examsRepository.findById(exams[1].id);
-    expect(exam).toBeUndefined();
-  });
-
   it('should not remove batch exams if id does not exist', async () => {
-    const requests = [{ exam_id: exams[0].id }, { exam_id: '1234' }];
+    const requests = [{ exam_id: exams[0].id }, { exam_id: 1234 }];
 
     await expect(removeBatchExams.execute(requests)).rejects.toBeInstanceOf(
       AppError,

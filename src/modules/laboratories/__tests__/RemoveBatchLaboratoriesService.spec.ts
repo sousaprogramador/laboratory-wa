@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import Laboratory from '../entities/Laboratory';
 import FakeLaboratoriesRepository from '../repositories/implementations/FakeLaboratoriesRepository';
 import RemoveBatchLaboratories from '../services/RemoveBatchLaboratoriesService';
@@ -40,7 +40,7 @@ describe('remove batch laboratories', () => {
   it('should not remove batch laboratories if id does not exist', async () => {
     const requests = [
       { laboratory_id: laboratories[0].id },
-      { laboratory_id: '1234' },
+      { laboratory_id: 1234 },
     ];
 
     await expect(

@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import Exam from '../entities/Exam';
 import { clinicalExam } from '../mocks/exams';
 import FakeExamsRepository from '../repositories/implementations/FakeExamsRepository';

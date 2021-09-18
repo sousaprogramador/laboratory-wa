@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import IExamsRepository from '../repositories/IExamsRepository';
 import Exam from '../entities/Exam';
@@ -33,8 +33,6 @@ export default class UpdateExamService {
       throw new AppError(`Exam with name ${name} already in use`);
 
     exam.name = name;
-    exam.type = type;
-    exam.status = status;
     await this.examsRepository.save(exam);
 
     return exam;

@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import Laboratory from '../entities/Laboratory';
 import ILaboratoriesRepository from '../repositories/ILaboratoriesRepository';
@@ -36,7 +36,6 @@ export default class UpdateLaboratoryService {
 
     laboratory.name = name;
     laboratory.address = address;
-    laboratory.status = status;
     await this.laboratoriesRepository.save(laboratory);
 
     return laboratory;

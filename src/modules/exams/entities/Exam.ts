@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, JoinColumn, ManyToOne } from 'typeorm';
 
-import Laboratory from '@modules/laboratories/entities/Laboratory';
+import Laboratory from '../../laboratories/entities/Laboratory';
 
 export enum ExamTypes {
     ANALISE_CLINICA = "analise clinica",

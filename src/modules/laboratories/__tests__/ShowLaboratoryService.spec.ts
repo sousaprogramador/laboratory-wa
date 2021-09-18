@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import Laboratory from '../entities/Laboratory';
 import normalLaboratory from '../mocks/laboratories';
 import FakeLaboratoriesRepository from '../repositories/implementations/FakeLaboratoriesRepository';

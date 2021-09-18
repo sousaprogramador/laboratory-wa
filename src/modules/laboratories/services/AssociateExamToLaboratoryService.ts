@@ -1,5 +1,5 @@
-import IExamsRepository from '@modules/exams/repositories/IExamsRepository';
-import AppError from '@shared/errors/AppError';
+import IExamsRepository from '../../exams/repositories/IExamsRepository';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import ILaboratoriesRepository from '../repositories/ILaboratoriesRepository';
 
@@ -30,16 +30,6 @@ export default class AssociateExamToLaboratoryService {
     if (!exam) throw new AppError("Exam doesn't exist", 404);
 
     if (!exam.status) throw new AppError('Exam not activated');
-
-    if (
-      await this.laboratoriesRepository.findByIdAndExam({
-        laboratoryId,
-        examId,
-      })
-    )
-      throw new AppError('Association already exist');
-
-    laboratory.exams.push(exam);
 
     await Promise.all([
       this.laboratoriesRepository.save(laboratory),

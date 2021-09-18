@@ -32,7 +32,7 @@ class TypeORMExamsRepository implements IExamsRepository {
     return this.ormRepository.remove(exam);
   }
 
-  public async findById(examId: string): Promise<Exam | undefined> {
+  public async findById(examId: number): Promise<Exam | undefined> {
     const exam = this.ormRepository.findOne({ where: { id: examId } });
     return exam;
   }

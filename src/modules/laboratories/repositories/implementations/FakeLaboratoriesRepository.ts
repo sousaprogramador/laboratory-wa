@@ -43,18 +43,11 @@ class FakeLaboratoriesRepository implements ILaboratoriesRepository {
   }: IRemoveExamDTO): Promise<void> {
     this.laboratories = this.laboratories.map(foundLaboratory => {
       if (foundLaboratory.id !== laboratoryId) return foundLaboratory;
-
-      const index = foundLaboratory.exams.findIndex(
-        findExam => findExam.id === examId,
-      );
-
-      foundLaboratory.exams.splice(index, 1);
-
       return foundLaboratory;
     });
   }
 
-  public async findById(laboratoryId: string): Promise<Laboratory | undefined> {
+  public async findById(laboratoryId: number): Promise<Laboratory | undefined> {
     return this.laboratories.find(laboratory => laboratory.id === laboratoryId);
   }
 
@@ -66,33 +59,16 @@ class FakeLaboratoriesRepository implements ILaboratoriesRepository {
     status: boolean,
     { limit, page }: IPaginationOptions,
   ): Promise<Pagination<Laboratory>> {
-    const foundLaboratories = this.laboratories.filter(
-      findWithdraw => findWithdraw.status === status,
-    );
 
-    const total = foundLaboratories.length;
+    const total = this.laboratories.length;
 
     return {
-      values: foundLaboratories.slice((page - 1) * limit, page * limit),
+      values: this.laboratories.slice((page - 1) * limit, page * limit),
       total,
       totalPages: Math.ceil(total / limit),
     };
   }
 
-  public async findByIdAndExam({
-    laboratoryId,
-    examId,
-  }: IFindByIdAndExamDTO): Promise<Laboratory | undefined> {
-    const laboratory = await this.laboratories.find(
-      foundLaboratory => foundLaboratory.id === laboratoryId,
-    );
-
-    if (!laboratory) return undefined;
-
-    return laboratory.exams.find(foundExam => foundExam.id === examId)
-      ? laboratory
-      : undefined;
-  }
 }
 
 export default FakeLaboratoriesRepository;

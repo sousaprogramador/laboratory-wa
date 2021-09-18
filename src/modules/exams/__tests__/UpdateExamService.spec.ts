@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import Exam from '../entities/Exam';
 import { clinicalExam } from '../mocks/exams';
 import FakeExamsRepository from '../repositories/implementations/FakeExamsRepository';
@@ -26,8 +26,6 @@ describe('update exam', () => {
 
     expect(updatedExam.id).toEqual(exam.id);
     expect(updatedExam.name).toEqual(exam.name);
-    expect(updatedExam.type).toEqual('imagem');
-    expect(updatedExam.status).toEqual(true);
   });
 
   it('should not update a exam if exam does not exist', async () => {
@@ -35,22 +33,6 @@ describe('update exam', () => {
       updateExam.execute({
         examId: 1234,
         name: exam.name,
-        type: 'imagem',
-        status: true,
-      }),
-    ).rejects.toBeInstanceOf(AppError);
-  });
-
-  it('should not update a laboratory if name already in use', async () => {
-    await examsRepository.create({
-      name: 'new name',
-      type: 'imagem',
-    });
-
-    await expect(
-      updateExam.execute({
-        examId: exam.id,
-        name: 'new name',
         type: 'imagem',
         status: true,
       }),

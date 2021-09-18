@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import IExamsRepository from '../repositories/IExamsRepository';
 
 interface IRequest {
-  exam_id: string;
+  exam_id: number;
 }
 
 @injectable()

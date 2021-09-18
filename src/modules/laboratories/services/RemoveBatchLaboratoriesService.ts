@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import ILaboratoriesRepository from '../repositories/ILaboratoriesRepository';
 
