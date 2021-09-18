@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/var/www/laboratory-wa
+    steps:
+      - checkout
+      - run:
+          name: DG - Push changes
+          command: |
+            ssh root@177.84.108.76 -p 32533 'cd /var/www/laboratory-wa && git pull'
+      - run:
+          name: DG - Install Dependencies
+          command: |
+            ssh root@177.84.108.76 -p 32533 'cd /var/www/laboratory-wa && docker-composer up -d'
+workflows:
+  version: 2
+  deploy-and-build:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
