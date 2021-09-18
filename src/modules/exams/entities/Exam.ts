@@ -1,35 +1,43 @@
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, JoinColumn, ManyToOne } from 'typeorm';
+
 import Laboratory from '@modules/laboratories/entities/Laboratory';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+
+export enum ExamTypes {
+    ANALISE_CLINICA = "analise clinica",
+    IMAGEM = "imagem"
+}
+
+export enum StatusTypes {
+    ATIVO = "ativo",
+    INATIVO = "inativo"
+}
 
 @Entity('exams')
 class Exam {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+    id: number;
 
-  @Column()
-  name: string;
+    @Column()
+    name: string;
+    
+    @Column({type: "enum", enum: ExamTypes})
+    type: ExamTypes;
 
-  @Column()
-  type: 'analise clinica' | 'imagem';
+    @Column({type: "enum", enum: StatusTypes, default: StatusTypes.ATIVO})
+    status: StatusTypes;
 
-  @Column({ default: false })
-  status: boolean;
+    @ManyToOne(() => Laboratory, (laboratory: Laboratory) => laboratory.id)
+    @JoinColumn({name: 'laboratory_id'})
+    laboratory: Promise<Laboratory[]>;
 
-  @ManyToMany(() => Laboratory, laboratory => laboratory.exams)
-  laboratories: Laboratory[];
+    @Column({type: 'integer'})
+    laboratory_id: number;
+    
+    @CreateDateColumn()
+    created_at: Date;
 
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+    @UpdateDateColumn()
+    updated_at: Date;
 }
 
 export default Exam;

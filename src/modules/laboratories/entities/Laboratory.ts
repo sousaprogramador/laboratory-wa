@@ -1,37 +1,29 @@
-import Exam from '@modules/exams/entities/Exam';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+
+export enum StatusTypes {
+    ATIVO = "ativo",
+    INATIVO = "inativo"
+}
 
 @Entity('laboratories')
 class Laboratory {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
-  @Column()
-  name: string;
+    @Column()
+    name: string;
+    
+    @Column()
+    address: string;
+    
+    @Column({type: "enum", enum: StatusTypes, default: StatusTypes.ATIVO})
+    status: StatusTypes;
 
-  @Column()
-  address: string;
+    @CreateDateColumn()
+    created_at: Date;
 
-  @Column({ default: false })
-  status: boolean;
-
-  @ManyToMany(() => Exam, exam => exam.laboratories, { eager: true })
-  @JoinTable()
-  exams: Exam[];
-
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+    @UpdateDateColumn()
+    updated_at: Date;
 }
 
 export default Laboratory;

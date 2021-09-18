@@ -71,7 +71,7 @@ class TypeORMLaboratoriesRepository implements ILaboratoriesRepository {
       take: limit,
       skip: (page - 1) * limit,
       order: {
-        createdAt: 'DESC',
+        created_At: 'DESC',
       },
     });
 
