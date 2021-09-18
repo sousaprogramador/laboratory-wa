@@ -27,7 +27,7 @@ describe('show laboratory', () => {
   it('should not show a laboratory if laboratory id does not exist', async () => {
     await expect(
       showLaboratory.execute({
-        laboratoryId: '1234',
+        laboratoryId: 1234,
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

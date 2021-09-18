@@ -8,7 +8,7 @@ export default interface IExamsRepository {
   create(data: ICreateExamDTO): Promise<Exam>;
   save(exam: Exam): Promise<Exam>;
   remove(exam: Exam): Promise<Exam>;
-  findById(examId: string): Promise<Exam | undefined>;
+  findById(examId: number): Promise<Exam | undefined>;
   findByName(name: string): Promise<Exam | undefined>;
   findAllByStatusAndType(
     data: IFindAllByStatusAndType,

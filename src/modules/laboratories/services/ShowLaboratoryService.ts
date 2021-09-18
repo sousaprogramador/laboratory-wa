@@ -4,7 +4,7 @@ import Laboratory from '../entities/Laboratory';
 import ILaboratoriesRepository from '../repositories/ILaboratoriesRepository';
 
 interface IRequest {
-  laboratoryId: string;
+  laboratoryId: number;
 }
 
 @injectable()

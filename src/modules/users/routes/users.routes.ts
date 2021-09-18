@@ -10,5 +10,13 @@ router.get(
   pagination,
   usersController.index,
 );
+router.post(
+  '/',
+  usersController.create,
+);
+router.post(
+  '/login',
+  usersController.login,
+);
 
 export default router;

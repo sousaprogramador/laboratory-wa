@@ -30,7 +30,7 @@ describe('remove laboratory', () => {
   it('should not remove a laboratory if id does not exist', async () => {
     await expect(
       removeLaboratory.execute({
-        laboratoryId: '1234',
+        laboratoryId: 1234,
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

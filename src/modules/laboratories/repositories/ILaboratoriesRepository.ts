@@ -10,7 +10,7 @@ export default interface ILaboratoriesRepository {
   save(laboratory: Laboratory): Promise<Laboratory>;
   remove(laboratory: Laboratory): Promise<Laboratory>;
   removeExam(data: IRemoveExamDTO): Promise<void>;
-  findById(laboratoryId: string): Promise<Laboratory | undefined>;
+  findById(laboratoryId: number): Promise<Laboratory | undefined>;
   findByName(name: string): Promise<Laboratory | undefined>;
   findAllByStatus(
     status: boolean,

@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import CreateUsersService from '../services/CreateUsersService';
 import ListUsersService from '../services/ListUsersService';
+import AuthenticateUserService from '../services/AuthenticateUserService';
 
 
 export default class UsersController {
@@ -25,5 +26,18 @@ export default class UsersController {
     const user = await createUser.execute(req.body);
 
     return res.status(201).json(classToClass(user));
+  }
+
+  async login(req: Request, res: Response):Promise<Response>{
+    const { email, password } = req.body;
+
+    const authenticateUser = new AuthenticateUserService();
+
+    const {token} = await authenticateUser.execute({
+        email,
+        password
+    });
+
+    return res.json({token});
   }
 }

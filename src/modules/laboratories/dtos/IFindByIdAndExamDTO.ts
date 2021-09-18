@@ -1,4 +1,4 @@
 export default interface IFindByIdAndExamDTO {
-  laboratoryId: string;
-  examId: string;
+  laboratoryId: number;
+  examId: number;
 }

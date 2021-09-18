@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import IExamsRepository from '../repositories/IExamsRepository';
 
 interface IRequest {
-  examId: string;
+  examId: number;
 }
 
 @injectable()

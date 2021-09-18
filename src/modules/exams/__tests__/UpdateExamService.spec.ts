@@ -33,7 +33,7 @@ describe('update exam', () => {
   it('should not update a exam if exam does not exist', async () => {
     await expect(
       updateExam.execute({
-        examId: '1234',
+        examId: 1234,
         name: exam.name,
         type: 'imagem',
         status: true,

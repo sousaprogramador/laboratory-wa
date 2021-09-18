@@ -5,7 +5,6 @@ import Exam from '../entities/Exam';
 import IExamsRepository from '../repositories/IExamsRepository';
 
 interface IRequest {
-  exam_id: string;
   name: string;
   type: 'analise clinica' | 'imagem';
   status: boolean;

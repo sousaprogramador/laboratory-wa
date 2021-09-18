@@ -5,7 +5,7 @@ import Laboratory from '../entities/Laboratory';
 import ILaboratoriesRepository from '../repositories/ILaboratoriesRepository';
 
 interface IRequest {
-  laboratory_id: string;
+  laboratory_id: number;
   name: string;
   address: string;
   status: boolean;

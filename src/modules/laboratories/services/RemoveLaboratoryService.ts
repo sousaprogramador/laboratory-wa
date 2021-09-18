@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import ILaboratoriesRepository from '../repositories/ILaboratoriesRepository';
 
 interface IRequest {
-  laboratoryId: string;
+  laboratoryId: number;
 }
 
 @injectable()

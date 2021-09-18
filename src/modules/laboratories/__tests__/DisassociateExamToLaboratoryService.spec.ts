@@ -24,9 +24,7 @@ describe('associate exam to laboratory', () => {
 
     laboratory = await laboratoriesRepository.create(normalLaboratory);
     exam = await examsRepository.create(clinicalExam);
-    laboratory.status = true;
-    exam.status = true;
-    laboratory.exams.push(exam);
+
     await Promise.all([
       laboratoriesRepository.save(laboratory),
       examsRepository.save(exam),
@@ -49,7 +47,7 @@ describe('associate exam to laboratory', () => {
   it('should not disassociate a exam to a laboratory if laboratory does not exist', async () => {
     await expect(
       disassociateExamToLaboratory.execute({
-        laboratoryId: '1234',
+        laboratoryId: 1234,
         examId: exam.id,
       }),
     ).rejects.toBeInstanceOf(AppError);

@@ -28,7 +28,7 @@ describe('remove exam', () => {
   it('should not remove a exam if exam does not exist', async () => {
     await expect(
       removeExam.execute({
-        examId: '1234',
+        examId: 1234,
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

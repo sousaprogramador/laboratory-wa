@@ -33,7 +33,7 @@ describe('show laboratory', () => {
   it('should not update a laboratory if laboratory id does not exist', async () => {
     await expect(
       updateLaboratory.execute({
-        laboratoryId: '1234',
+        laboratoryId: 1234,
         name: 'new name',
         address: 'new address',
         status: true,
