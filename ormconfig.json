@@ -1,9 +1,9 @@
 {
     "type": "mysql",
-    "host": "localhost",
+    "host": "192.168.50.6",
     "port": 3306,
     "username": "root",
-    "password": "secret",
+    "password": "password",
     "database": "laboratoryApi",
     "entities": [ 
         "./src/modules/*/entities/*.ts" 

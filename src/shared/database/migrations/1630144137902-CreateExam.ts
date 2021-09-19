@@ -22,7 +22,7 @@ export class CreateExam1630144137902 implements MigrationInterface {
             name: 'ExamLab',
             columnNames: ['laboratory_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'laboratory',
+            referencedTableName: 'laboratories',
             onDelete: 'SET NULL',
             onUpdate: 'CASCADE'
         }));
