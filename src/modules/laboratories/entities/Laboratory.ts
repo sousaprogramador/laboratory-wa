@@ -20,7 +20,7 @@ class Laboratory {
     status: StatusTypes;
 
     @CreateDateColumn()
-    created_at: Date;
+    created_At: Date;
 
     @UpdateDateColumn()
     updated_at: Date;

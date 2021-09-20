@@ -26,7 +26,7 @@ class Exam {
     @Column({type: "enum", enum: StatusTypes, default: StatusTypes.ATIVO})
     status: StatusTypes;
 
-    @ManyToOne(() => Laboratory, (laboratory: Laboratory) => laboratory.id)
+    @ManyToOne(() => Laboratory, (laboratories: Laboratory) => laboratories.id)
     @JoinColumn({name: 'laboratory_id'})
     laboratory: Promise<Laboratory[]>;
 

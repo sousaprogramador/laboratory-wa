@@ -14,10 +14,7 @@ class TypeORMExamsRepository implements IExamsRepository {
   }
 
   public async create(data: ICreateExamDTO): Promise<Exam> {
-    const exam = this.ormRepository.create({
-      ...data,
-      laboratories: [],
-    });
+    const exam = this.ormRepository.create(data);
 
     await this.ormRepository.save(exam);
 
@@ -41,7 +38,7 @@ class TypeORMExamsRepository implements IExamsRepository {
     const exam = await this.ormRepository
       .createQueryBuilder('exams')
       .where('exams.name = :name', { name })
-      .leftJoinAndSelect('exams.laboratories', 'laboratories')
+      //.leftJoinAndSelect('exams.laboratory_id', 'laboratories.id')
       .getOne();
 
     return exam;

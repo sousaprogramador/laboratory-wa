@@ -6,6 +6,7 @@ import Exam from '../entities/Exam';
 interface IRequest {
   name: string;
   type: 'analise clinica' | 'imagem';
+  laboratory_id : number;
 }
 
 @injectable()
