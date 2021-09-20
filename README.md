@@ -1,7 +1,7 @@
 # Instruções
 ## Desenvolvimento
-- Informe no arquivo `.ormconfig.json` as variáveis de ambiente, como credenciais, acesso de banco de dados, secrets, etc;
-- Inicie um banco de dados postgresql;
+- Informe no arquivo `.ormconfig.json` as variáveis de acesso de banco de dados;
+- Inicie um banco de dados mysql;
 - Execute:
 
 ```bash
@@ -18,9 +18,8 @@ docker-compose up -d
 
 ## Produção
 
-- Informe no arquivo `.ormconfig.json` as variáveis do ambiente de produção. IMPORTANTE: você precisa alterar as variáveis
-  do TypeORM para usar o diretório de produção, substituindo `src` por `dist` e `*.ts` por `*.js`;
-- Inicie um banco de dados postgresql;
+- Informe no arquivo `.ormconfig.json` as variáveis do ambiente de produção.;
+- Inicie um banco de dados mysql;
 - Execute:
 
 ```bash
