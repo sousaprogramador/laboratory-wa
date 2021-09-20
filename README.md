@@ -1,4 +1,6 @@
 # Instruções
+## Usuario e Senha
+  - admin@admin.com | password: 123456
 ## Desenvolvimento
 - Informe no arquivo `.ormconfig.json` as variáveis de acesso de banco de dados;
 - Inicie um banco de dados mysql;
